@@ -6,55 +6,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   <title>Frontend Mentor | Newsletter sign-up form with success message</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
   <div class="wrapper">
     <main>
 
-      <section class="newsletter-details">
-        <!-- Sign-up form start -->
-        <h2 class="newsletter-details__title">Stay updated!</h2>
-        <p class="newsletter-details__brief">Join 60,000+ product managers receiving monthly updates on:</p>
-        <ul class="newsletter-details__items">
-          <li>
-            <img src="assets/images/check.svg" alt="check" class="check">
-            <span>Product discovery and building what matters</span>
-          </li>
-          <li>
-            <img src="assets/images/check.svg" alt="check" class="check">
-            <span>Measuring to ensure updates are a success</span>
-          </li>
-          <li>
-            <img src="assets/images/check.svg" alt="check" class="check">
-            <span>And much more!</span>
-          </li>
-        </ul>
+      <div class="content">
 
-        <form class="newsletter-details__form" onsubmit="actions.submit(event)">
-          <strong class="email-label">
-            <span>Email address</span>
-            <span class="email-error-message">Valid email required</span>
-          </strong>
-          <input class="email-input" type="text" placeholder="email@company.com"
-            onkeyup="actions.onEmailChange(event)" />
-          <button type="submit" class="subscribe-button primary">Subscribe to monthly newsletter</button>
-        </form>
-        <!-- Sign-up form end -->
-      </section>
+        <section class="newsletter-details">
+          <!-- Sign-up form start -->
+          <h2 class="newsletter-details__title">Stay updated!</h2>
+          <p class="newsletter-details__brief">Join 60,000+ product managers receiving monthly updates on:</p>
+          <ul class="newsletter-details__items">
+            <li>
+              <img src="assets/images/check.svg" alt="check" class="check">
+              <span>Product discovery and building what matters</span>
+            </li>
+            <li>
+              <img src="assets/images/check.svg" alt="check" class="check">
+              <span>Measuring to ensure updates are a success</span>
+            </li>
+            <li>
+              <img src="assets/images/check.svg" alt="check" class="check">
+              <span>And much more!</span>
+            </li>
+          </ul>
 
-      <section class="helper-graphic">
-        <img src="assets/images/illustration-sign-up-desktop.svg" alt="My Happy SVG" />
-      </section>
+          <form class="newsletter-details__form" onsubmit="actions.submit(event)">
+            <strong class="email-label">
+              <span>Email address</span>
+              <span class="email-error-message">Valid email required</span>
+            </strong>
+            <input class="email-input" type="text" placeholder="email@company.com"
+              onkeyup="actions.onEmailChange(event)" />
+            <button type="submit" class="subscribe-button primary">Subscribe to monthly newsletter</button>
+          </form>
+          <!-- Sign-up form end -->
+        </section>
+
+        <section class="helper-graphic">
+          <img src="assets/images/illustration-sign-up-desktop.svg" alt="My Happy SVG" />
+        </section>
+      </div>
 
       <!-- Success message start -->
-      <dialog id="success-modal">
-        Thanks for subscribing!
-        A confirmation email has been sent to ash@loremcompany.com.
-        Please open it and click the button inside to confirm your subscription.
-        <button class="dismiss" onclick="actions.toggleModal()">Dismiss message</button>
-      </dialog>
+      <div class="success-modal">
+        <img src="assets/images/check.svg" alt="check" class="check">
+        <h2 class="success-modal__title">Thanks for subscribing!</h2>
+        <p>
+          A confirmation email has been sent to <strong>ash@loremcompany.com</strong>.
+          Please open it and click the button inside to confirm your subscription.
+        </p>
+        <button class="success-modal__dismiss primary" onclick="actions.dismiss()">Dismiss message</button>
+      </div>
       <!-- Success message end -->
 
     </main>
@@ -67,73 +73,7 @@
     </div>
   </footer>
 
-  <script async>
-    const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    const actions = {
-      submit: (ev) => {
-        ev.preventDefault();
-        console.log('submit');
-        for (const item of document.getElementsByTagName('email-input')) {
-          const isBadEmail = !EMAIL_REGEX.test(item.value);
-
-          if (isBadEmail) {
-            return;
-          }
-        }
-        actions.toggleModal();
-      },
-      toggleModal: () => {
-        const el = document.getElementById('success-modal');
-        if (el.getAttribute('open') !== null) {
-          el.removeAttribute('open');
-        }
-        else {
-          el.setAttribute('open', '')
-        }
-      },
-      onEmailChange: (ev) => {
-        const value = ev.target.value;
-        const isBadEmail = !EMAIL_REGEX.test(value);
-        actions.toggleClass('email-input', 'error', isBadEmail);
-        actions.toggleClass('email-error-message', 'show', isBadEmail);
-
-        actions.setAttribute('subscribe-button', 'disabled', isBadEmail);
-      },
-      toggleClass: (targetClass, className, isAdd = false) => {
-
-        for (const item of document.getElementsByClassName(targetClass)) {
-          if (isAdd) {
-            item.classList.add(className);
-          }
-          else {
-            item.classList.remove(className);
-          }
-        }
-      },
-      setAttribute: (targetClass, attribute, value) => {
-        for (const item of document.getElementsByClassName(targetClass)) {
-          if (value === false) {
-            item.removeAttribute(attribute);
-          }
-          else {
-            item.setAttribute(attribute, value);
-          }
-        }
-      }
-    };
-
-    const presentation = {
-      configureTheme: () => {
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          console.log('dark mode preferred');
-        }
-        else {
-          console.log('light mode preferred');
-        }
-      }
-    };
-    presentation.configureTheme();
-  </script>
+  <script src="script.js" async></script>
 </body>
 
 </html>

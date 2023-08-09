@@ -8,7 +8,8 @@ $clr-white-80: hsl(0, 0%, 80%);
 $clr-white-70: hsl(0, 0%, 70%);
 
 $clr-orange-100: hsl(30, 90%, 50%);
-$clr-pink-100: hsl(350, 70%, 60%);
+$clr-red-55: hsl(5, 60%, 50%, .8);
+$clr-pink-100: hsl(350, 80%, 60%);
 $clr-red-50: hsl(0, 70%, 50%);
 $clr-red-100: hsl(10, 90%, 95%);
 
@@ -20,6 +21,7 @@ $clr-red-100: hsl(10, 90%, 95%);
   --clr-neutral-inactive: #{$clr-white-70};
   --clr-pink-100: #{$clr-pink-100};
   --clr-orange-100: #{$clr-orange-100};
+  --clr-accent-shadow: #{$clr-red-55};
   --clr-error-100: #{$clr-red-50};
   --clr-bg-error-100: #{$clr-red-100};
 }
@@ -35,7 +37,7 @@ $clr-red-100: hsl(10, 90%, 95%);
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
-  src: url('assets/fonts/Roboto-Regular.ttf');
+  src: url('../assets/fonts/Roboto-Regular.ttf');
 }
 
 /* roboto-700 - latin */
@@ -44,7 +46,7 @@ $clr-red-100: hsl(10, 90%, 95%);
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
-  src: url('assets/fonts/Roboto-Bold.ttf');
+  src: url('../assets/fonts/Roboto-Bold.ttf');
 }
 
 body {
@@ -70,6 +72,11 @@ body {
 }
 
 main {
+  display: flex;
+  flex-direction: row;
+}
+
+.content {
   background-color: var(--clr-bg-neutral);
   border-radius: 20px;
   padding: 1.5rem;
@@ -106,19 +113,8 @@ main {
     margin-top: 3em;
   }
 
-  .check-avatar {
-    background-color: var(--clr-check-avatar);
-  }
 }
 
-#success-modal {
-  padding: 2em;
-  max-width: 38vw;
-  border: none;
-  border-radius: 20px;
-  font-size: 1rem;
-  align-self: center;
-}
 
 footer {
   background-color: var(--clr-primary);
@@ -139,12 +135,6 @@ footer {
   }
 }
 
-.check {
-  width: 22px;
-  background-color: var(--clr-check-avatar);
-  border-radius: 50%;
-  padding: 4px;
-}
 
 ul li > * {
   vertical-align: middle;
@@ -169,6 +159,7 @@ button {
 
     &:hover:not(:disabled) {
       background-image: linear-gradient(to right, var(--clr-pink-100), var(--clr-orange-100));
+      box-shadow: 5px 15px 40px 0px var(--clr-accent-shadow);
     }
   }
 
@@ -204,4 +195,40 @@ input {
       display: inline;
     }
   }
+}
+
+.hide {
+  display: none;
+}
+
+.check {
+  width: 22px;
+  padding: 4px;
+  border-radius: 50%;
+  background-color: var(--clr-check-avatar);
+}
+
+.success-modal {
+  display: none;
+  border-radius: 20px;
+  padding: 3em 4em;
+  max-width: 500px;
+  background-color: var(--clr-bg-neutral);
+  color: var(--clr-primary);
+
+  &__title {
+    font-size: 3.5rem;
+    margin-top: 0.6em;
+    margin-bottom: 0.1em;
+  }
+
+  &.show {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .check {
+    width: 60px;
+  }
+
 }
