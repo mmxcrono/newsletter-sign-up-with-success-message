@@ -6,6 +6,8 @@
   --clr-neutral-inactive: hsl(0, 0%, 70%);
   --clr-pink-100: hsl(350, 70%, 60%);
   --clr-orange-100: hsl(30, 90%, 50%);
+  --clr-error-100: hsl(0, 70%, 50%);
+  --clr-bg-error-100: hsl(10, 90%, 95%);
 }
 
 * {
@@ -70,6 +72,7 @@ main {
   gap: 1em;
   display: flex;
   flex-direction: column;
+  margin-block: 2em;
 }
 .newsletter-details__items span {
   margin-left: 1em;
@@ -78,6 +81,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 0.5em;
+  margin-top: 3em;
 }
 .newsletter-details .check-avatar {
   background-color: var(--clr-check-avatar);
@@ -129,14 +133,18 @@ button {
   padding: 1em 0.8em;
   font-size: 1.1rem;
   font-family: "Roboto", sans-serif;
+  margin-block: 1em;
   cursor: pointer;
 }
 button.primary {
   background-color: var(--clr-primary);
   color: var(--clr-bg-neutral);
 }
-button.primary:hover {
+button.primary:hover:not(:disabled) {
   background-image: linear-gradient(to right, var(--clr-pink-100), var(--clr-orange-100));
+}
+button:disabled {
+  background-color: var(--clr-neutral-inactive);
 }
 
 input {
@@ -145,6 +153,23 @@ input {
   padding: 1em;
   color: var(--clr-primary);
   font-size: 1.1rem;
+}
+input.error {
+  color: var(--clr-error-100);
+  border-color: var(--clr-error-100);
+  background-color: var(--clr-bg-error-100);
+}
+
+.email-label {
+  display: flex;
+  justify-content: space-between;
+}
+.email-label .email-error-message {
+  display: none;
+  color: var(--clr-error-100);
+}
+.email-label .email-error-message.show {
+  display: inline;
 }
 
 /*# sourceMappingURL=styles.css.map */

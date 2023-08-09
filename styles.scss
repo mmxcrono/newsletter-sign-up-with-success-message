@@ -9,6 +9,8 @@ $clr-white-70: hsl(0, 0%, 70%);
 
 $clr-orange-100: hsl(30, 90%, 50%);
 $clr-pink-100: hsl(350, 70%, 60%);
+$clr-red-50: hsl(0, 70%, 50%);
+$clr-red-100: hsl(10, 90%, 95%);
 
 :root {
   --clr-bg-primary: #{$nightBlue};
@@ -18,6 +20,8 @@ $clr-pink-100: hsl(350, 70%, 60%);
   --clr-neutral-inactive: #{$clr-white-70};
   --clr-pink-100: #{$clr-pink-100};
   --clr-orange-100: #{$clr-orange-100};
+  --clr-error-100: #{$clr-red-50};
+  --clr-bg-error-100: #{$clr-red-100};
 }
 
 * {
@@ -88,6 +92,7 @@ main {
     gap: 1em;
     display: flex;
     flex-direction: column;
+    margin-block: 2em;
 
     span {
       margin-left: 1em;
@@ -98,6 +103,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: .5em;
+    margin-top: 3em;
   }
 
   .check-avatar {
@@ -154,16 +160,20 @@ button {
   padding: 1em .8em;
   font-size: 1.1rem;
   font-family: 'Roboto', sans-serif;
+  margin-block: 1em;
   cursor: pointer;
 
   &.primary {
     background-color: var(--clr-primary);
     color: var(--clr-bg-neutral);
 
-    &:hover {
+    &:hover:not(:disabled) {
       background-image: linear-gradient(to right, var(--clr-pink-100), var(--clr-orange-100));
-
     }
+  }
+
+  &:disabled {
+    background-color: var(--clr-neutral-inactive);
   }
 }
 
@@ -173,4 +183,25 @@ input {
   padding: 1em;
   color: var(--clr-primary);
   font-size: 1.1rem;
+
+  &.error {
+    color: var(--clr-error-100);
+    border-color: var(--clr-error-100);
+    background-color: var(--clr-bg-error-100);
+  }
+}
+
+.email-label {
+
+  display: flex;
+  justify-content: space-between;
+
+  .email-error-message {
+    display: none;
+    color: var(--clr-error-100);
+  
+    &.show {
+      display: inline;
+    }
+  }
 }
