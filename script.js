@@ -1,13 +1,19 @@
 
 const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+const state = {
+  email: '',
+}
 const actions = {
   onEmailChange: (ev) => actions.validateEmail(ev.target.value),
   validateEmail: (value) => {
+    state.email = value;
+
     const isBadEmail = !EMAIL_REGEX.test(value);
 
     utils.toggleClass('email-input', 'error', isBadEmail);
     utils.toggleClass('email-error-message', 'show', isBadEmail);
     utils.setAttribute('subscribe-button', 'disabled', isBadEmail);
+    
 
     return !isBadEmail;
   },
@@ -18,6 +24,10 @@ const actions = {
       if (!actions.validateEmail(item.value)) {
         return;
       }
+    }
+    
+    for (const item of document.getElementsByClassName('email-display')) {
+      item.innerHTML = state.email;
     }
 
     utils.toggleClass('content', 'hide', true);
