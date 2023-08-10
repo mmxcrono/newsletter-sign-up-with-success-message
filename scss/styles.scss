@@ -1,3 +1,5 @@
+@import 'mixins';
+
 $orangeRaspberry: #ff5e54;
 $nightBlue: #36384d;
 $midnightBlue: #232742;
@@ -86,12 +88,32 @@ main {
   overflow: auto;
   max-width: 1000px;
   gap: 4em;
+
+  
+  @include respond-to(medium) {
+    flex-direction: column-reverse;
+    padding: 0;
+    max-width: 375px;
+    border-radius: 0;
+    gap: 1em;
+  }
 }
 
 .newsletter-details {
 
+  
+  @include respond-to(medium) {
+    padding: 1.4em;
+  }
+
   &__title {
     font-size: 3.5rem;
+    
+    @include respond-to(medium) {
+      margin-top: 0;
+      margin-bottom: .5em;
+      font-size: 2.5rem;
+    }
   }
 
   &__items {
@@ -113,6 +135,23 @@ main {
     margin-top: 3em;
   }
 
+}
+
+.helper-graphic {
+  
+  .mobile-graphic {
+    display: none;
+  }
+
+  @include respond-to(medium) {
+    .desktop-graphic {
+      display: none;
+    }
+
+    .mobile-graphic {
+      display: block;
+    }
+  }
 }
 
 
@@ -152,13 +191,18 @@ button {
   font-family: 'Roboto', sans-serif;
   margin-block: 1em;
   cursor: pointer;
-
+  
   &.primary {
+    --clr-from: var(--clr-primary);
+    --clr-to: var(--clr-primary);
+    
     background-color: var(--clr-primary);
     color: var(--clr-bg-neutral);
+    background-image: linear-gradient(to right, var(--clr-from), var(--clr-to));
 
     &:hover:not(:disabled) {
-      background-image: linear-gradient(to right, var(--clr-pink-100), var(--clr-orange-100));
+      --clr-from: var(--clr-pink-100);
+      --clr-to: var(--clr-orange-100);
       box-shadow: 5px 15px 40px 0px var(--clr-accent-shadow);
     }
   }
@@ -229,6 +273,24 @@ input {
 
   .check {
     width: 60px;
+  }
+    
+  @include respond-to(medium) {
+    border-radius: 0;
+    height: 95vh;
+
+    &__title {
+      font-size: 2.5rem;
+    }
+
+    &__details {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 1;
+    }
+
+
   }
 
 }

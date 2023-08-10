@@ -47,18 +47,22 @@
         </section>
 
         <section class="helper-graphic">
-          <img src="assets/images/illustration-sign-up-desktop.svg" alt="My Happy SVG" />
+          <img class="desktop-graphic" src="assets/images/illustration-sign-up-desktop.svg" alt="Sign Up" />
+          <img class="mobile-graphic" src="assets/images/illustration-sign-up-mobile.svg" alt="Sign Up" />
         </section>
       </div>
 
       <!-- Success message start -->
       <div class="success-modal">
-        <img src="assets/images/check.svg" alt="check" class="check">
-        <h2 class="success-modal__title">Thanks for subscribing!</h2>
-        <p>
-          A confirmation email has been sent to <strong>ash@loremcompany.com</strong>.
-          Please open it and click the button inside to confirm your subscription.
-        </p>
+        <div class="success-modal__details">
+
+          <img src="assets/images/check.svg" alt="check" class="check">
+          <h2 class="success-modal__title">Thanks for subscribing!</h2>
+          <p>
+            A confirmation email has been sent to <strong>ash@loremcompany.com</strong>.
+            Please open it and click the button inside to confirm your subscription.
+          </p>
+        </div>
         <button class="success-modal__dismiss primary" onclick="actions.dismiss()">Dismiss message</button>
       </div>
       <!-- Success message end -->
