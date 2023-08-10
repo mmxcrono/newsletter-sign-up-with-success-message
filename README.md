@@ -51,11 +51,6 @@ I wanted to use sass styles with BEM naming convention. Mixins would help with r
 
 Creating web content without a framework is a bit more tedious and requires more effort to organize styles.
 
-To see how you can add code snippets, see below:
-
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
 ```scss
   @include respond-to(medium) {
     flex-direction: column-reverse;
@@ -67,7 +62,6 @@ To see how you can add code snippets, see below:
 ```
 
 ```js
-
 const utils = {
   toggleClass: (targetClass, className, isAdd = false) => {
     for (const item of document.getElementsByClassName(targetClass)) {
