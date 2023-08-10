@@ -10,7 +10,7 @@ $clr-white-80: hsl(0, 0%, 80%);
 $clr-white-70: hsl(0, 0%, 70%);
 
 $clr-orange-100: hsl(30, 90%, 50%);
-$clr-red-55: hsl(5, 60%, 50%, .8);
+$clr-red-55: hsl(5, 60%, 50%, 0.8);
 $clr-pink-100: hsl(350, 80%, 60%);
 $clr-red-50: hsl(0, 70%, 50%);
 $clr-red-100: hsl(10, 90%, 95%);
@@ -89,7 +89,6 @@ main {
   max-width: 1000px;
   gap: 4em;
 
-  
   @include respond-to(medium) {
     flex-direction: column-reverse;
     padding: 0;
@@ -100,18 +99,16 @@ main {
 }
 
 .newsletter-details {
-
-  
   @include respond-to(medium) {
     padding: 1.4em;
   }
 
   &__title {
     font-size: 3.5rem;
-    
+
     @include respond-to(medium) {
       margin-top: 0;
-      margin-bottom: .5em;
+      margin-bottom: 0.5em;
       font-size: 2.5rem;
     }
   }
@@ -131,14 +128,12 @@ main {
   &__form {
     display: flex;
     flex-direction: column;
-    gap: .5em;
+    gap: 0.5em;
     margin-top: 3em;
   }
-
 }
 
 .helper-graphic {
-  
   .mobile-graphic {
     display: none;
   }
@@ -154,16 +149,15 @@ main {
   }
 }
 
-
 footer {
   background-color: var(--clr-primary);
   width: 100%;
 
-  font-size: .8rem;
+  font-size: 0.8rem;
   padding: 1em;
   color: var(--clr-bg-neutral);
-  opacity: .85;
-  letter-spacing: .1ch;
+  opacity: 0.85;
+  letter-spacing: 0.1ch;
 
   .attribution {
     text-align: center;
@@ -174,28 +168,27 @@ footer {
   }
 }
 
-
 ul li > * {
   vertical-align: middle;
 }
 
 .label {
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 
 button {
   border: none;
   border-radius: 8px;
-  padding: 1em .8em;
+  padding: 1em 0.8em;
   font-size: 1.1rem;
   font-family: 'Roboto', sans-serif;
   margin-block: 1em;
   cursor: pointer;
-  
+
   &.primary {
     --clr-from: var(--clr-primary);
     --clr-to: var(--clr-primary);
-    
+
     background-color: var(--clr-primary);
     color: var(--clr-bg-neutral);
     background-image: linear-gradient(to right, var(--clr-from), var(--clr-to));
@@ -227,14 +220,13 @@ input {
 }
 
 .email-label {
-
   display: flex;
   justify-content: space-between;
 
   .email-error-message {
     display: none;
     color: var(--clr-error-100);
-  
+
     &.show {
       display: inline;
     }
@@ -274,7 +266,7 @@ input {
   .check {
     width: 60px;
   }
-    
+
   @include respond-to(medium) {
     border-radius: 0;
     height: 95vh;
@@ -289,8 +281,5 @@ input {
       justify-content: center;
       flex: 1;
     }
-
-
   }
-
 }

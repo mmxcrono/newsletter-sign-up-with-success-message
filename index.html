@@ -36,10 +36,10 @@
 
           <form class="newsletter-details__form" onsubmit="actions.submit(event)">
             <strong class="email-label">
-              <span>Email address</span>
+              <label for="email">Email address</label>
               <span class="email-error-message">Valid email required</span>
             </strong>
-            <input class="email-input" type="text" placeholder="email@company.com" required
+            <input name="email" class="email-input" type="text" placeholder="email@company.com" required
               onkeyup="actions.onEmailChange(event)" />
             <button type="submit" class="subscribe-button primary">Subscribe to monthly newsletter</button>
           </form>
